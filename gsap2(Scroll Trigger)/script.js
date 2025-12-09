@@ -44,19 +44,34 @@
 //     }
 // })
 
-gsap.from("#page2 #box",{
-    scale:0,
-    opacity:0,
-    duration:1,
-    rotate:720,
+// gsap.from("#page2 #box",{
+//     scale:0,
+//     opacity:0,
+//     duration:1,
+//     rotate:720,
     
+//     scrollTrigger:{
+//         trigger:"#page2 #box",
+//         scroller:"body",
+//         markers:true,
+//         start:"top 60%",
+//         end:"top 30%",
+//         scrub:3, //use for the smoothness
+//         pin:true
+//     }
+// })
+
+
+//next phase
+gsap.to("#container2 h1",{
+    transform:"translateX(-150%)",
     scrollTrigger:{
-        trigger:"#page2 #box",
+        trigger:"#container2",
         scroller:"body",
         markers:true,
-        start:"top 60%",
-        end:"top 30%",
-        scrub:3, //use for the smoothness
+        start:"top 0%",
+        end:"top -150%",
+        scrub:2,
         pin:true
     }
 })

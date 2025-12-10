@@ -71,7 +71,7 @@ gsap.to("#container2 h1",{
         markers:true,
         start:"top 0%",
         end:"top -150%",
-        scrub:2,
+        scrub:3,
         pin:true
     }
 })

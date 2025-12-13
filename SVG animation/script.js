@@ -1,77 +1,69 @@
-// gsap.from("#page1 #box",{
-//     scale:0,
-//     delay:1,
-//     duration:2,
-//     rotate:720
+let path = `M 10 100 Q 500 100 990 100`
+
+let finalPath = `M 10 100 Q 500 100 990 100`
+
+let string = document.querySelector("#string");
+
+// string.addEventListener("mouseenter",function(dets){
+//     console.log(dets)
 // })
 
-// gsap.from("#page2 #box",{
-//     scale:0,
-//     duration:2,
-//     rotate:720,
-//     // scrollTrigger:"#page2 #box"
-//     scrollTrigger:{
-//         trigger:"#page2 #box",
-//         scroller:"body",
-//         markers:true,
-//         start:"top 60%"
-//     }
+// string.addEventListener("mouseleave",function(){
+//     console.log("lived")
 // })
 
-// gsap.from("#page2 h1",{
-//     opacity:0,
-//     duration:2,
-//     x:500,
-    
-//     scrollTrigger:{
-//         trigger:"#page2 h1",
-//         scroller:"body",
-//         markers:true,
-//         start:"top 60%"
-//     }
-// })
-
-// gsap.from("#page2 h2",{
-//     opacity:0,
-//     duration:2,
-//     x:-500,
-    
-//     scrollTrigger:{
-//         trigger:"#page2 h2",
-//         scroller:"body",
-//         markers:true,
-//         start:"top 60%"
-//     }
-// })
-
-// gsap.from("#page2 #box",{
-//     scale:0,
-//     opacity:0,
-//     duration:1,
-//     rotate:720,
-    
-//     scrollTrigger:{
-//         trigger:"#page2 #box",
-//         scroller:"body",
-//         markers:true,
-//         start:"top 60%",
-//         end:"top 30%",
-//         scrub:3, //use for the smoothness
-//         pin:true
-//     }
-// })
-
-
-//next phase
-gsap.to("#container2 h1",{
-    transform:"translateX(-150%)",
-    scrollTrigger:{
-        trigger:"#container2",
-        scroller:"body",
-        markers:true,
-        start:"top 0%",
-        end:"top -150%",
-        scrub:3,
-        pin:true
-    }
+string.addEventListener("mousemove",function(dets){
+    path = `M 10 100 Q ${dets.x} ${dets.y} 990 100`
+    gsap.to("svg path",{
+        attr: {d: path},
+        duration:0.3,
+        ease:"power3.out"
+    })
 })
+
+
+string.addEventListener("mouseleave",function(dets){
+    gsap.to("svg path",{
+        attr: {d: finalPath},
+        duration:1.5,
+        ease: "elastic.out(1,0.2)",
+    })
+})
+
+
+//or can apply more professional approch
+// let string = document.querySelector("#string");
+// let svg = string.querySelector("svg");
+
+// let startX = 100;
+// let endX = 400;
+// let baseY = 80;
+
+// let finalPath = `M ${startX} ${baseY} Q 250 ${baseY} ${endX} ${baseY}`;
+
+// string.addEventListener("mousemove", function (e) {
+//   let rect = string.getBoundingClientRect();
+
+//   // Mouse position relative to container
+//   let x = e.clientX - rect.left;
+//   let y = e.clientY - rect.top;
+
+//   // Clamp X inside margins
+//   x = Math.max(startX, Math.min(x, endX));
+
+//   let path = `M ${startX} ${baseY} Q ${x} ${y} ${endX} ${baseY}`;
+
+//   gsap.to("svg path", {
+//     attr: { d: path },
+//     duration: 0.3,
+//     ease: "power3.out",
+//   });
+// });
+
+// string.addEventListener("mouseleave", function () {
+//   gsap.to("svg path", {
+//     attr: { d: finalPath },
+//     duration: 1.5,
+//     ease: "elastic.out(1, 0.2)",
+//   });
+// });

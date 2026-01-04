@@ -1,45 +1,27 @@
-function breakTheText() {
-    let h1 = document.querySelector("h1")
-    let h1text = h1.textContent
+window.addEventListener("wheel", function (dets) {
+    if (dets.deltaY > 0) {
+        gsap.to(".marque", {
+            transform: "translateX(-200%)",
+            duration: 4,
+            ease: "none",
+            repeat: -1
+        });
 
-    let splitedText = h1text.split("")
-    let halfValue = splitedText.length/2
+        //to rotate the arrow
+        gsap.to(".marque img",{
+            rotate:180
+        })
+    } else {
+        gsap.to(".marque", {
+            transform: "translateX(0%)",
+            duration: 4,
+            ease: "none",
+            repeat: -1
+        });
 
-    let clutter = ""
-    splitedText.forEach(function (e,idx) {
-        if(idx<halfValue){
-            clutter += `<span class="a">${e}</span>`
-        }else{
-            clutter += `<span class="b">${e}</span>`
-        }
-    })
-
-    h1.innerHTML = clutter
-}
-
-breakTheText()
-
-
-// gsap.from("h1 span",{
-//     y:70,
-//     opacity:0,
-//     duration:0.8,
-//     dalay:0.5,
-//     stagger:0.15
-// })
-
-gsap.from("h1 .a",{
-    y:80,
-    opacity:0,
-    duration:0.6,
-    dalay:0.5,
-    stagger:0.15
+        gsap.to(".marque img",{
+            rotate:0
+        })
+    }
 })
 
-gsap.from("h1 .b",{
-    y:80,
-    opacity:0,
-    duration:0.6,
-    dalay:0.5,
-    stagger:-0.15
-})

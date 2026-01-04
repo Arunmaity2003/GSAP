@@ -3,27 +3,57 @@
   padding: 0;
   box-sizing: border-box;
   font-family: aeonik;
-  color: white;
+  /* color: white; */
 }
 
-body,html {
+.orbitron {
+  font-family: "Orbitron", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 70;
+  font-style: normal;
+}
+
+
+body,
+html {
   height: 100%;
   width: 100%;
 }
 
-body{
+body {
   background-color: #111;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-h1{
-  font-size: 100px;
+#page1,
+#page2,
+#page3 {
+  height: 100vh;
+  width: 100%;
+  padding: 5vw 0;
+}
+
+#move {
+  background-color: lawngreen;
+  display: flex;
+  padding: 3vw 0;
   overflow: hidden;
 }
 
+.marque h1{
+  font-size: 4vw;
+}
+.marque img {
+  height: 4.5vw;
+  mix-blend-mode: multiply;
+  border-radius: 50%;
+  padding: 2px;
+}
 
-h1 span{
-  display: inline-block;
+.marque{
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 3vw;
+  padding: 0 1.5vw;
+  transform: translateX(-100%);
 }
